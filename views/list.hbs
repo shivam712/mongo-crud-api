@@ -1,0 +1,33 @@
+<script>
+	function deleteCourse(courseId) {
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("Delete", "/course/deleteCourse", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("courseId=" + courseId);
+		window.location.reload();
+	}
+</script>
+<table dir="ltr" width="500" border="1" >
+	<caption>Shivam's Table</caption>
+	<colgroup width="50%" />
+	<colgroup id="colgroup" class="colgroup" align="center" 
+			valign="middle" title="title" width="1*" 
+			span="2" style="background:#ddd;" />
+	
+	<tr>
+		<th scope="col">ID</th>
+		<th scope="col">Name</th>
+		<th scope="col">Fees</th>
+		<th scope="col">Duration</th>
+		<th>Delete</th>
+	</tr>
+    {{#each data}}
+		<tr>
+            <td>{{this.courseId}}</td>
+			<td>{{this.courseName}}</td>
+			<td>{{this.courseFee}}</td>
+			<td>{{this.courseDuration}}</td>
+			<td><button onclick="deleteCourse({{this.courseId}})">Delete</button></td>
+		</tr>
+	{{/each}}
+</table>
